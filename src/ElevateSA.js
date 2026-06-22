@@ -226,10 +226,12 @@ export default function ElevateSA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => navigateTo('home')} className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-sm">E</span>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <svg className="w-8 h-8 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
             </div>
-            <span className="text-white font-bold text-xl tracking-tight">Elevate<span className="text-amber-400">SA</span></span>
+            <span className="text-white font-bold text-xl tracking-tight">All Powerful Marketing</span>
           </button>
           <div className="hidden md:flex items-center gap-8">
             {['home', 'services', 'about', 'contact'].map(p => (
