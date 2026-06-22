@@ -666,6 +666,18 @@ export default function ElevateSA() {
               See Our Services
             </button>
           </div>
+          <div className="mt-14 w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/3d8AQWQPPK8?si=D6DkZqU_AWe8AsKk"
+                title="ElevateSA Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {stats.map((s, i) => (
               <div key={i} className="text-center">
