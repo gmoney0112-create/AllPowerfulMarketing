@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ElevateSA - Lead Generation, Social Media Management, Video Creation, and Website Creation for San Antonio businesses." />
+  <title>ElevateSA | Marketing That Moves Businesses Forward</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{}}}</script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+    .hide{display:none}
+  </style>
+</head>
+<body class="bg-white">
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect,useCallback}=React;
+
+/* ---- Icons ---- */
+const Icon=({d,stroke=false,vb='0 0 24 24',cls='w-5 h-5'})=>(
+  <svg className={cls} fill={stroke?'none':'currentColor'} stroke={stroke?'currentColor':'none'} strokeWidth={stroke?2:0} viewBox={vb}>
+    {[].concat(d).map((p,i)=><path key={i} d={p}/>)}
+  </svg>
+);
+const MenuIcon=()=><svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>;
+const XIcon=()=><svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
+const ArrowRight=({cls='w-4 h-4'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>;
+const Check=({cls='w-5 h-5'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>;
+const ChevR=({cls='w-4 h-4'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>;
+const StarIcon=({filled=false,cls='w-4 h-4'})=><svg className={cls} fill={filled?'#fbbf24':'none'} stroke="#fbbf24" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>;
+const MailIcon=({cls='w-4 h-4'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>;
+const PhoneIcon=({cls='w-4 h-4'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.45 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+const MapIcon=({cls='w-4 h-4'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>;
+const TrendIcon=({cls='w-6 h-6'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>;
+const UsersIcon=({cls='w-6 h-6'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
+const VideoIcon=({cls='w-6 h-6'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>;
+const GlobeIcon=({cls='w-6 h-6'})=><svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
+const FBIcon=()=><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>;
+const IGIcon=()=><svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>;
+const LIIcon=()=><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>;
+
+/* ---- Data ---- */
+const SERVICES=[
+  {id:'lead-generation',Icon:TrendIcon,title:'Lead Generation',short:'Fill your pipeline with qualified prospects who are ready to buy.',grad:'from-amber-500 to-orange-500',bg:'bg-amber-50',accent:'text-amber-600',border:'border-amber-200'},
+  {id:'social-media',Icon:UsersIcon,title:'Social Media Management',short:'Consistent, engaging content that builds your brand and grows your audience.',grad:'from-blue-500 to-indigo-600',bg:'bg-blue-50',accent:'text-blue-600',border:'border-blue-200'},
+  {id:'video-creation',Icon:VideoIcon,title:'Video Creation',short:'Professional video content that captures attention and drives results.',grad:'from-purple-500 to-pink-500',bg:'bg-purple-50',accent:'text-purple-600',border:'border-purple-200'},
+  {id:'web-creation',Icon:GlobeIcon,title:'Website & Webpage Creation',short:'Beautiful, conversion-focused websites that work as hard as you do.',grad:'from-emerald-500 to-teal-500',bg:'bg-emerald-50',accent:'text-emerald-600',border:'border-emerald-200'},
+];
+const SVC_DETAIL={
+  'lead-generation':{
+    tagline:'More leads. Better leads. Real results.',
+    hero:'Stop waiting for customers to find you. ElevateSA builds targeted lead generation systems that deliver qualified prospects straight into your pipeline so you can focus on closing deals, not chasing them.',
+    intro:'Most businesses struggle not because their product is bad, but because they lack a reliable way to attract new customers. We build that system through paid advertising, outreach campaigns, landing page optimization, and data-driven targeting.',
+    includes:['Targeted paid ad campaigns (Google, Meta, LinkedIn)','Custom landing pages optimized for conversion','Email and SMS outreach sequences','CRM setup and lead tracking integration','Audience research and buyer persona development','A/B testing to continuously improve results','Monthly performance reporting with clear ROI metrics','Retargeting campaigns to re-engage warm prospects'],
+    useCases:['Local service businesses needing a steady client pipeline','B2B companies targeting decision-makers','Real estate agents and brokers','Healthcare and medical practices','Home services contractors','Any business tired of relying on referrals alone'],
+    why:'Every campaign we build is tied to a clear conversion goal, tracked with precision, and continuously optimized. You will always know where your leads are coming from and what they cost.',
+  },
+  'social-media':{
+    tagline:'Your brand, active and engaging every single day.',
+    hero:'Your customers are on social media right now. The question is whether they see you or your competitors. ElevateSA manages your social presence so you stay top of mind, build trust, and turn followers into paying customers.',
+    intro:'Posting inconsistently or going silent for weeks kills your credibility and algorithm reach. Our team creates and schedules professional, on-brand content tailored to each platform so your social media works around the clock.',
+    includes:['Custom content calendar (30-day planned in advance)','Professional graphic design and copywriting','Platform management: Facebook, Instagram, LinkedIn, TikTok','Community management (comments, DMs, reviews)','Hashtag research and SEO-optimized captions','Story and reel creation','Monthly analytics report with engagement insights','Paid social ad management (optional add-on)'],
+    useCases:['Business owners who have no time to manage accounts','Brands that need a professional, consistent presence','Companies launching into a new market','Restaurants, retailers, and service businesses','Professionals building a personal brand','Any business whose social media has gone dormant'],
+    why:'Every post we create is designed for your brand, your audience, and your goals. We write in your voice, reflect your values, and always post with a purpose.',
+  },
+  'video-creation':{
+    tagline:'Content that stops the scroll and starts the conversation.',
+    hero:'Video is the highest-performing content format on every major platform. ElevateSA creates professional, eye-catching video content that builds your brand and converts viewers into clients.',
+    intro:'People buy from brands they trust, and video builds that trust faster than any other medium. Whether you need short-form reels, explainer videos, testimonial clips, or ad content, our creative team handles everything from concept to final edit.',
+    includes:['Short-form reels and TikToks (15-60 seconds)','Long-form promotional and brand videos','Service or product explainer videos','Client testimonial video production','Video ads optimized for paid campaigns','Scriptwriting and storyboarding','Professional editing, color grading, and captioning','Platform-specific formatting (vertical, square, landscape)'],
+    useCases:['Businesses launching a new product or service','Companies running paid video ad campaigns','Service businesses that want to showcase their work','Brands looking to grow on Instagram Reels or TikTok','Professionals building authority through video','Any business that wants to stand out in a crowded feed'],
+    why:'Great video is not just about looking good. It is about saying the right thing to the right audience at the right moment. We combine creative storytelling with strategic thinking to produce content that gets results.',
+  },
+  'web-creation':{
+    tagline:'Your 24/7 salesperson. Built to convert.',
+    hero:'Your website is your most powerful marketing tool or your biggest missed opportunity. ElevateSA builds fast, professional, conversion-focused websites and landing pages that turn visitors into customers.',
+    intro:'A slow or outdated website sends potential customers straight to your competitors. We design and build sites that look great on every device, load fast, rank on Google, and guide visitors toward taking action.',
+    includes:['Custom website design (desktop + mobile responsive)','Conversion-optimized landing pages','SEO foundation setup (meta tags, structured data, site speed)','Contact forms and lead capture integration','Google Analytics and tracking setup','Content writing and copyediting','Blog and content management system setup','Ongoing maintenance and update packages available'],
+    useCases:['Businesses with an outdated or non-existent website','Companies launching a new brand or rebrand','Businesses running ad campaigns needing landing pages','Service providers who need a site that generates leads','E-commerce brands needing a high-converting storefront','Professionals who want a site they are proud to share'],
+    why:'Every site we build starts with your goals, your audience, and your brand. We design with intention and build with performance in mind, and we stick around to make sure it keeps working for you.',
+  },
+};
+const TESTIMONIALS=[
+  {name:'Maria L.',biz:'San Antonio Real Estate',quote:'ElevateSA completely transformed our lead pipeline. Within 60 days we had more qualified leads than we knew what to do with.',stars:5},
+  {name:'James T.',biz:'Local HVAC Company',quote:'Our social media was non-existent before ElevateSA. Now we get calls from Instagram every week. Night and day difference.',stars:5},
+  {name:'Rachel M.',biz:'Boutique Fitness Studio',quote:'The website they built for us is stunning and actually converts. Our online bookings tripled in the first month.',stars:5},
+];
+const STATS=[{v:'150+',l:'Clients Served'},{v:'3.2M+',l:'Leads Generated'},{v:'98%',l:'Client Retention'},{v:'5 Stars',l:'Avg Rating'}];
+const WHY=[
+  {t:'Results, Not Reports',d:'Every strategy we build is tied to a measurable outcome. You will always know what is working and what it is delivering.'},
+  {t:'Local Market Knowledge',d:'We know San Antonio. We understand the audiences, the competition, and what it takes to stand out in this market.'},
+  {t:'One Agency, Full Stack',d:'Stop managing five vendors. We handle leads, social, video, and websites under one roof with one point of contact.'},
+  {t:'No Lock-In Contracts',d:'We earn your business every month. Our results speak for themselves, and we do not need contracts to keep you around.'},
+];
+
+/* ---- App ---- */
+function App(){
+  const [page,setPage]=useState('home');
+  const [svc,setSvc]=useState(null);
+  const [menuOpen,setMenuOpen]=useState(false);
+  const [scrolled,setScrolled]=useState(false);
+  const [form,setForm]=useState({name:'',email:'',phone:'',service:'',message:''});
+  const [status,setStatus]=useState('');
+
+  useEffect(()=>{
+    const fn=()=>setScrolled(window.scrollY>20);
+    window.addEventListener('scroll',fn);
+    return ()=>window.removeEventListener('scroll',fn);
+  },[]);
+
+  const go=(p)=>{setPage(p);setSvc(null);setMenuOpen(false);window.scrollTo({top:0,behavior:'smooth'});};
+  const openSvc=(id)=>{setSvc(id);setPage('home');window.scrollTo({top:0,behavior:'smooth'});};
+  const closeSvc=()=>{setSvc(null);window.scrollTo({top:0,behavior:'smooth'});};
+  const onChange=(e)=>setForm(f=>({...f,[e.target.name]:e.target.value}));
+  const onSubmit=async(e)=>{
+    e.preventDefault();setStatus('sending');
+    setTimeout(()=>setStatus('success'),1200);
+  };
+
+  /* NAV */
+  const Navbar=()=>(
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?'bg-slate-900 shadow-xl':'bg-slate-900/95 backdrop-blur-sm'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <button onClick={()=>go('home')} className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-black text-sm">E</span>
+            </div>
+            <span className="text-white font-bold text-xl">Elevate<span className="text-amber-400">SA</span></span>
+          </button>
+          <div className="hidden md:flex items-center gap-8">
+            {['home','services','about','contact'].map(p=>(
+              <button key={p} onClick={()=>go(p)} className={`capitalize text-sm font-medium transition-colors ${page===p&&!svc?'text-amber-400':'text-slate-300 hover:text-white'}`}>{p}</button>
+            ))}
+            <button onClick={()=>go('contact')} className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-amber-400 hover:to-orange-400 transition-all">Get a Free Quote</button>
+          </div>
+          <button className="md:hidden text-slate-300" onClick={()=>setMenuOpen(!menuOpen)}>
+            {menuOpen?<XIcon/>:<MenuIcon/>}
+          </button>
+        </div>
+      </div>
+      {menuOpen&&(
+        <div className="md:hidden bg-slate-900 border-t border-slate-800 px-4 py-3 space-y-1">
+          {['home','services','about','contact'].map(p=>(
+            <button key={p} onClick={()=>go(p)} className={`block w-full text-left px-3 py-2 rounded-lg capitalize text-sm font-medium ${page===p?'bg-amber-500/10 text-amber-400':'text-slate-300 hover:bg-slate-800'}`}>{p}</button>
+          ))}
+          <button onClick={()=>go('contact')} className="block w-full text-center mt-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">Get a Free Quote</button>
+        </div>
+      )}
+    </nav>
+  );
+
+  /* FOOTER */
+  const Footer=()=>(
+    <footer className="bg-slate-950 text-slate-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <button onClick={()=>go('home')} className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center"><span className="text-white font-black text-sm">E</span></div>
+              <span className="text-white font-bold text-xl">Elevate<span className="text-amber-400">SA</span></span>
+            </button>
+            <p className="text-sm leading-relaxed max-w-sm">San Antonio's marketing partner for businesses ready to grow. We deliver leads, content, video, and web solutions that actually move the needle.</p>
+            <div className="flex gap-3 mt-4">
+              <a href="#" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><FBIcon/></a>
+              <a href="#" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><IGIcon/></a>
+              <a href="#" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><LIIcon/></a>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Services</h4>
+            <ul className="space-y-2 text-sm">
+              {SERVICES.map(s=>(<li key={s.id}><button onClick={()=>openSvc(s.id)} className="hover:text-amber-400 transition-colors text-left">{s.title}</button></li>))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</h4>
+            <ul className="space-y-2 text-sm">
+              <li><button onClick={()=>go('about')} className="hover:text-amber-400">About Us</button></li>
+              <li><button onClick={()=>go('contact')} className="hover:text-amber-400">Contact</button></li>
+              <li><button onClick={()=>go('privacy')} className="hover:text-amber-400">Privacy Policy</button></li>
+              <li><button onClick={()=>go('terms')} className="hover:text-amber-400">Terms of Service</button></li>
+            </ul>
+            <div className="mt-5 space-y-2 text-sm">
+              <div className="flex items-center gap-2"><MapIcon cls="w-4 h-4 text-amber-400 flex-shrink-0"/><span>San Antonio, TX</span></div>
+              <div className="flex items-center gap-2"><MailIcon cls="w-4 h-4 text-amber-400 flex-shrink-0"/><span>hello@elevatesa.com</span></div>
+              <div className="flex items-center gap-2"><PhoneIcon cls="w-4 h-4 text-amber-400 flex-shrink-0"/><span>(210) 555-0100</span></div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <p>&copy; {new Date().getFullYear()} ElevateSA. All rights reserved.</p>
+          <div className="flex gap-4">
+            <button onClick={()=>go('privacy')} className="hover:text-white">Privacy Policy</button>
+            <button onClick={()=>go('terms')} className="hover:text-white">Terms of Service</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+
+  /* CONTACT FORM */
+  const ContactForm=({compact=false})=>(
+    <form onSubmit={onSubmit}>
+      <div className={`grid gap-4 ${compact?'grid-cols-1':'grid-cols-1 sm:grid-cols-2'}`}>
+        <input name="name" value={form.name} onChange={onChange} required placeholder="Your Name" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors"/>
+        <input name="email" type="email" value={form.email} onChange={onChange} required placeholder="Email Address" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors"/>
+        <input name="phone" type="tel" value={form.phone} onChange={onChange} placeholder="Phone Number" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors"/>
+        <select name="service" value={form.service} onChange={onChange} className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500">
+          <option value="">Service of Interest</option>
+          {SERVICES.map(s=>(<option key={s.id} value={s.id}>{s.title}</option>))}
+          <option value="all">All Services / Not Sure</option>
+        </select>
+        <textarea name="message" value={form.message} onChange={onChange} placeholder="Tell us about your business and goals..." rows={compact?3:4} className={`px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-amber-500 resize-none ${compact?'':'sm:col-span-2'}`}/>
+      </div>
+      <button type="submit" disabled={status==='sending'} className="mt-4 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-semibold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-60">
+        {status==='sending'?'Sending...':<><span>Get My Free Strategy Call</span><ArrowRight/></>}
+      </button>
+      {status==='success'&&<p className="mt-3 text-center text-emerald-400 text-sm">Thank you! We will be in touch within 1 business day.</p>}
+    </form>
+  );
+
+  /* SERVICE DETAIL */
+  if(svc&&SVC_DETAIL[svc]){
+    const s=SERVICES.find(x=>x.id===svc);
+    const d=SVC_DETAIL[svc];
+    const SI=s.Icon;
+    return(
+      <div className="min-h-screen bg-white">
+        <Navbar/>
+        <div className="pt-16">
+          <div className={`bg-gradient-to-br ${s.grad} py-16 px-4`}>
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium mb-6">
+                <SI cls="w-4 h-4"/>{s.title}
+              </div>
+              <h1 className="text-3xl sm:text-5xl font-black text-white mb-4">{d.tagline}</h1>
+              <p className="text-white/90 text-lg max-w-2xl mx-auto">{d.hero}</p>
+              <button onClick={()=>go('contact')} className="mt-8 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 inline-flex items-center gap-2">Get Started <ArrowRight/></button>
+            </div>
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-16">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">What We Do</h2>
+                <p className="text-slate-600 leading-relaxed mb-8">{d.intro}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">What's Included</h3>
+                <ul className="space-y-3">
+                  {d.includes.map((item,i)=>(
+                    <li key={i} className="flex items-start gap-3">
+                      <Check cls={`w-5 h-5 ${s.accent} flex-shrink-0 mt-0.5`}/>
+                      <span className="text-slate-700 text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <div className={`${s.bg} ${s.border} border rounded-2xl p-6 mb-6`}>
+                  <h3 className={`text-lg font-bold ${s.accent} mb-4`}>Who This Is For</h3>
+                  <ul className="space-y-2">
+                    {d.useCases.map((uc,i)=>(
+                      <li key={i} className="flex items-start gap-2 text-slate-700 text-sm">
+                        <ChevR cls={`w-4 h-4 ${s.accent} flex-shrink-0 mt-0.5`}/>{uc}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-slate-900 rounded-2xl p-6">
+                  <h3 className="text-lg font-bold text-white mb-3">Why ElevateSA</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">{d.why}</p>
+                  <button onClick={()=>go('contact')} className="mt-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold px-5 py-2.5 rounded-lg text-sm hover:from-amber-400 hover:to-orange-400 inline-flex items-center gap-2">Request a Free Quote <ArrowRight/></button>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <button onClick={closeSvc} className="text-slate-500 hover:text-slate-700 text-sm underline">&#8592; Back to All Services</button>
+            </div>
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    );
+  }
+
+  /* PRIVACY */
+  if(page==='privacy')return(
+    <div className="min-h-screen bg-white"><Navbar/>
+      <div className="pt-16 max-w-3xl mx-auto px-4 py-16">
+        <h1 className="text-3xl font-black text-slate-900 mb-2">Privacy Policy</h1>
+        <p className="text-slate-500 text-sm mb-8">Last updated: June 2025</p>
+        <div className="text-slate-700 space-y-4 text-sm leading-relaxed">
+          <p>ElevateSA is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website or use our services.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Information We Collect</h2>
+          <p>We collect information you voluntarily provide, including your name, email address, phone number, and details shared via our contact form. We may also collect usage data through analytics tools such as Google Analytics.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">How We Use Your Information</h2>
+          <p>We use your information to respond to inquiries, provide services, and improve our offerings. We do not sell your personal information to third parties.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Contact Us</h2>
+          <p>Email us at hello@elevatesa.com with any questions.</p>
+        </div>
+        <button onClick={()=>go('home')} className="mt-10 text-amber-600 hover:text-amber-700 text-sm font-medium">&#8592; Back to Home</button>
+      </div>
+      <Footer/>
+    </div>
+  );
+
+  /* TERMS */
+  if(page==='terms')return(
+    <div className="min-h-screen bg-white"><Navbar/>
+      <div className="pt-16 max-w-3xl mx-auto px-4 py-16">
+        <h1 className="text-3xl font-black text-slate-900 mb-2">Terms of Service</h1>
+        <p className="text-slate-500 text-sm mb-8">Last updated: June 2025</p>
+        <div className="text-slate-700 space-y-4 text-sm leading-relaxed">
+          <p>By using ElevateSA's website or services, you agree to these Terms of Service.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Services</h2>
+          <p>ElevateSA provides digital marketing services including lead generation, social media management, video creation, and website development. Scope is defined in individual client agreements.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Intellectual Property</h2>
+          <p>Content created by ElevateSA on behalf of a client becomes the client's property upon full payment. ElevateSA retains the right to display work in our portfolio unless otherwise agreed in writing.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Limitation of Liability</h2>
+          <p>ElevateSA is not liable for indirect or consequential damages. Total liability shall not exceed the amount paid for the specific service.</p>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Contact</h2>
+          <p>Email hello@elevatesa.com with questions.</p>
+        </div>
+        <button onClick={()=>go('home')} className="mt-10 text-amber-600 hover:text-amber-700 text-sm font-medium">&#8592; Back to Home</button>
+      </div>
+      <Footer/>
+    </div>
+  );
+
+  /* ABOUT */
+  if(page==='about')return(
+    <div className="min-h-screen bg-white"><Navbar/>
+      <div className="pt-16">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 px-4 text-center">
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">About <span className="text-amber-400">ElevateSA</span></h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">A San Antonio-rooted marketing agency built on one belief: your business deserves marketing that actually works.</p>
+        </div>
+        <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h2>
+              <p className="text-slate-600 leading-relaxed mb-4">ElevateSA was founded by marketers and entrepreneurs who got tired of seeing great local businesses lose to competitors with bigger ad budgets and mediocre products. We built ElevateSA to level the playing field.</p>
+              <p className="text-slate-600 leading-relaxed mb-4">We are a full-service digital marketing agency based in San Antonio, Texas. Our team specializes in four core areas: lead generation, social media management, video creation, and website development.</p>
+              <p className="text-slate-600 leading-relaxed">Every strategy we build starts with your goals, your audience, and your budget and it is built to deliver measurable, real-world results.</p>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-amber-700 mb-2">Our Mission</h3>
+                <p className="text-slate-700 text-sm leading-relaxed">To help San Antonio businesses grow through smart, strategic, results-driven digital marketing without the agency bloat, the jargon, or the empty promises.</p>
+              </div>
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-slate-800 mb-2">Our Values</h3>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  {['Transparency in pricing and reporting','Accountability to measurable results','Speed — we move as fast as your business needs','Partnership — your growth is our growth'].map((v,i)=>(
+                    <li key={i} className="flex items-start gap-2"><Check cls="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"/>{v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {STATS.map((s,i)=>(
+              <div key={i} className="text-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6">
+                <div className="text-3xl font-black text-amber-400 mb-1">{s.v}</div>
+                <div className="text-slate-400 text-xs font-medium uppercase tracking-wider">{s.l}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">Ready to grow?</h2>
+            <p className="text-slate-600 mb-6">Let us talk about your business and put together a plan that makes sense for you.</p>
+            <button onClick={()=>go('contact')} className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold px-8 py-3 rounded-xl hover:from-amber-400 hover:to-orange-400 inline-flex items-center gap-2">Get a Free Strategy Call <ArrowRight/></button>
+          </div>
+        </div>
+      </div>
+      <Footer/>
+    </div>
+  );
+
+  /* CONTACT */
+  if(page==='contact')return(
+    <div className="min-h-screen bg-white"><Navbar/>
+      <div className="pt-16">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 px-4 text-center">
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">Let's <span className="text-amber-400">Talk</span></h1>
+          <p className="text-slate-300 text-lg max-w-xl mx-auto">Tell us about your business. We will put together a free strategy and quote within 1 business day.</p>
+        </div>
+        <div className="max-w-5xl mx-auto px-4 py-16">
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="md:col-span-2 bg-slate-900 rounded-2xl p-8">
+              <h2 className="text-xl font-bold text-white mb-6">Get Your Free Strategy Call</h2>
+              <ContactForm/>
+            </div>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Contact Info</h3>
+                <div className="space-y-3">
+                  {[{Icon:MapIcon,label:'Location',val:'San Antonio, TX',href:null},{Icon:MailIcon,label:'Email',val:'hello@elevatesa.com',href:'mailto:hello@elevatesa.com'},{Icon:PhoneIcon,label:'Phone',val:'(210) 555-0100',href:'tel:2105550100'}].map((c,i)=>(
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0"><c.Icon cls="w-4 h-4 text-amber-600"/></div>
+                      <div><p className="font-medium text-slate-800 text-sm">{c.label}</p>{c.href?<a href={c.href} className="text-amber-600 hover:text-amber-700 text-sm">{c.val}</a>:<p className="text-slate-600 text-sm">{c.val}</p>}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <h4 className="font-bold text-amber-800 text-sm mb-2">What happens next?</h4>
+                <ol className="space-y-2 text-xs text-amber-900">
+                  <li className="flex gap-2"><span className="font-bold">1.</span> We review your submission within 1 business day.</li>
+                  <li className="flex gap-2"><span className="font-bold">2.</span> We schedule a free 30-minute strategy call.</li>
+                  <li className="flex gap-2"><span className="font-bold">3.</span> You receive a custom proposal with pricing.</li>
+                  <li className="flex gap-2"><span className="font-bold">4.</span> We get to work.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer/>
+    </div>
+  );
+
+  /* SERVICES PAGE */
+  if(page==='services')return(
+    <div className="min-h-screen bg-white"><Navbar/>
+      <div className="pt-16">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 px-4 text-center">
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">Our <span className="text-amber-400">Services</span></h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">Four high-impact marketing services built to grow San Antonio businesses.</p>
+        </div>
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          <div className="grid sm:grid-cols-2 gap-8">
+            {SERVICES.map(s=>{
+              const SI=s.Icon;
+              return(
+                <div key={s.id} className={`${s.bg} ${s.border} border rounded-2xl p-8 hover:shadow-lg transition-shadow`}>
+                  <div className={`w-12 h-12 bg-gradient-to-br ${s.grad} rounded-xl flex items-center justify-center mb-4`}><SI/></div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{s.title}</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">{SVC_DETAIL[s.id].intro.substring(0,180)}...</p>
+                  <button onClick={()=>openSvc(s.id)} className={`inline-flex items-center gap-2 ${s.accent} font-semibold text-sm`}>Learn More <ChevR/></button>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-10 text-center">
+            <h2 className="text-3xl font-black text-white mb-3">Not sure which service you need?</h2>
+            <p className="text-white/90 mb-6 max-w-xl mx-auto">Tell us about your goals and we will recommend the right combination.</p>
+            <button onClick={()=>go('contact')} className="bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 inline-flex items-center gap-2">Get a Free Consultation <ArrowRight/></button>
+          </div>
+        </div>
+      </div>
+      <Footer/>
+    </div>
+  );
+
+  /* HOME */
+  return(
+    <div className="min-h-screen bg-white">
+      <Navbar/>
+
+      {/* HERO */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20 px-4 overflow-hidden">
+        <div className="absolute inset-0" style={{background:'radial-gradient(circle at 30% 50%, rgba(245,158,11,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(249,115,22,0.1) 0%, transparent 50%)'}} />
+        <div className="relative max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-1.5 rounded-full text-sm font-medium mb-8">
+            <StarIcon filled={true} cls="w-3.5 h-3.5"/> San Antonio's Growth Marketing Agency
+          </div>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+            Marketing That <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Actually Grows</span> Your Business
+          </h1>
+          <p className="text-slate-300 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+            Lead generation. Social media. Video. Websites. ElevateSA delivers the marketing your San Antonio business needs to attract customers, build trust, and scale — all in one place.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={()=>go('contact')} className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold px-8 py-4 rounded-xl text-lg hover:from-amber-400 hover:to-orange-400 transition-all inline-flex items-center justify-center gap-2 shadow-lg">
+              Get a Free Strategy Call <ArrowRight cls="w-5 h-5"/>
+            </button>
+            <button onClick={()=>go('services')} className="border border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors inline-flex items-center justify-center gap-2">
+              See Our Services
+            </button>
+          </div>
+          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            {STATS.map((s,i)=>(
+              <div key={i} className="text-center">
+                <div className="text-3xl font-black text-amber-400">{s.v}</div>
+                <div className="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Everything Your Business Needs to <span className="text-amber-500">Grow Online</span></h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">Four focused services, one trusted partner. No bloated agency retainers — just real work that gets real results.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {SERVICES.map(s=>{
+              const SI=s.Icon;
+              return(
+                <button key={s.id} onClick={()=>openSvc(s.id)} className="group text-left bg-white border border-slate-200 hover:border-transparent hover:shadow-xl rounded-2xl p-6 transition-all duration-300">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${s.grad} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <SI cls="w-6 h-6 text-white"/>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{s.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{s.short}</p>
+                  <div className={`flex items-center gap-1 mt-4 text-sm font-semibold ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity`}>Learn more <ChevR/></div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="py-20 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6">Why San Antonio Businesses Choose <span className="text-amber-500">ElevateSA</span></h2>
+              <div className="space-y-5">
+                {WHY.map((item,i)=>(
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check cls="w-4 h-4 text-white"/>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">{item.t}</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">{item.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-slate-900 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-white mb-6">Get Your Free Strategy Call</h3>
+              <ContactForm compact={true}/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">What Our Clients Say</h2>
+            <p className="text-slate-600">Real results from real San Antonio businesses.</p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t,i)=>(
+              <div key={i} className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(t.stars)].map((_,j)=><StarIcon key={j} filled={true}/>)}
+                </div>
+                <p className="text-slate-700 text-sm leading-relaxed mb-4">"{t.quote}"</p>
+                <p className="font-bold text-slate-900 text-sm">{t.name}</p>
+                <p className="text-slate-500 text-xs">{t.biz}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-4 bg-gradient-to-r from-amber-500 to-orange-500">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Ready to Elevate Your Business?</h2>
+          <p className="text-white/90 text-xl mb-8 max-w-2xl mx-auto">Get a free 30-minute strategy call. No pressure, no commitment — just a clear plan to grow your business.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={()=>go('contact')} className="bg-white text-slate-900 font-bold px-8 py-4 rounded-xl text-lg hover:bg-slate-100 transition-colors inline-flex items-center justify-center gap-2">
+              Book My Free Call <ArrowRight cls="w-5 h-5"/>
+            </button>
+            <a href="mailto:hello@elevatesa.com" className="border-2 border-white text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-colors inline-flex items-center justify-center gap-2">
+              <MailIcon cls="w-5 h-5"/> hello@elevatesa.com
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer/>
+    </div>
+  );
+}
+
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
+</body>
+</html>
