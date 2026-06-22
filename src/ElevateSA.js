@@ -647,6 +647,18 @@ export default function ElevateSA() {
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #f59e0b 0%, transparent 60%), radial-gradient(circle at 80% 20%, #f97316 0%, transparent 50%)' }} />
         <div className="relative max-w-5xl mx-auto text-center">
+          <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20 mb-10">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/3d8AQWQPPK8?si=D6DkZqU_AWe8AsKk"
+                title="ElevateSA Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-1.5 rounded-full text-sm font-medium mb-8">
             <Star className="w-3.5 h-3.5 fill-amber-400" /> San Antonio's Growth Marketing Agency
           </div>
@@ -665,18 +677,6 @@ export default function ElevateSA() {
               className="border border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors inline-flex items-center justify-center gap-2">
               See Our Services
             </button>
-          </div>
-          <div className="mt-14 w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/3d8AQWQPPK8?si=D6DkZqU_AWe8AsKk"
-                title="ElevateSA Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
           </div>
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {stats.map((s, i) => (
