@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ElevateSA/static/css/main.cff265a6.css",
+    "main.js": "/ElevateSA/static/js/main.e4a1728e.js",
+    "static/js/453.fa5381f5.chunk.js": "/ElevateSA/static/js/453.fa5381f5.chunk.js",
+    "index.html": "/ElevateSA/index.html",
+    "main.cff265a6.css.map": "/ElevateSA/static/css/main.cff265a6.css.map",
+    "main.e4a1728e.js.map": "/ElevateSA/static/js/main.e4a1728e.js.map",
+    "453.fa5381f5.chunk.js.map": "/ElevateSA/static/js/453.fa5381f5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cff265a6.css",
+    "static/js/main.e4a1728e.js"
+  ]
+}
