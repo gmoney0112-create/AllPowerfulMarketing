@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ElevateSA/static/css/main.cff265a6.css",
-    "main.js": "/ElevateSA/static/js/main.759ef0d7.js",
-    "static/js/453.fa5381f5.chunk.js": "/ElevateSA/static/js/453.fa5381f5.chunk.js",
-    "index.html": "/ElevateSA/index.html",
-    "main.cff265a6.css.map": "/ElevateSA/static/css/main.cff265a6.css.map",
-    "main.759ef0d7.js.map": "/ElevateSA/static/js/main.759ef0d7.js.map",
-    "453.fa5381f5.chunk.js.map": "/ElevateSA/static/js/453.fa5381f5.chunk.js.map"
+    "main.css": "/static/css/main.cff265a6.css",
+    "main.js": "/static/js/main.dc55c91c.js",
+    "static/js/453.fa5381f5.chunk.js": "/static/js/453.fa5381f5.chunk.js",
+    "index.html": "/index.html",
+    "main.cff265a6.css.map": "/static/css/main.cff265a6.css.map",
+    "main.dc55c91c.js.map": "/static/js/main.dc55c91c.js.map",
+    "453.fa5381f5.chunk.js.map": "/static/js/453.fa5381f5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cff265a6.css",
-    "static/js/main.759ef0d7.js"
+    "static/js/main.dc55c91c.js"
   ]
 }
