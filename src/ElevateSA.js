@@ -288,7 +288,7 @@ export default function ElevateSA() {
               San Antonio's marketing partner for businesses ready to grow. We deliver leads, content, video, and web solutions that actually move the needle.
             </p>
             <div className="flex gap-3 mt-4">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><FacebookIcon /></a>
+              <a href="https://www.facebook.com/profile.php?id=61590598517520" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><FacebookIcon /></a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><InstagramIcon /></a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><LinkedInIcon /></a>
             </div>
