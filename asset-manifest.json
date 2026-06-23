@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/allpowerfulmarketing/static/css/main.cff265a6.css",
-    "main.js": "/allpowerfulmarketing/static/js/main.a9d1fd2e.js",
-    "static/js/453.e6c17669.chunk.js": "/allpowerfulmarketing/static/js/453.e6c17669.chunk.js",
-    "index.html": "/allpowerfulmarketing/index.html",
-    "main.cff265a6.css.map": "/allpowerfulmarketing/static/css/main.cff265a6.css.map",
-    "main.a9d1fd2e.js.map": "/allpowerfulmarketing/static/js/main.a9d1fd2e.js.map",
-    "453.e6c17669.chunk.js.map": "/allpowerfulmarketing/static/js/453.e6c17669.chunk.js.map"
+    "main.css": "/static/css/main.cff265a6.css",
+    "main.js": "/static/js/main.35a74b92.js",
+    "static/js/453.e6c17669.chunk.js": "/static/js/453.e6c17669.chunk.js",
+    "index.html": "/index.html",
+    "main.cff265a6.css.map": "/static/css/main.cff265a6.css.map",
+    "main.35a74b92.js.map": "/static/js/main.35a74b92.js.map",
+    "453.e6c17669.chunk.js.map": "/static/js/453.e6c17669.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cff265a6.css",
-    "static/js/main.a9d1fd2e.js"
+    "static/js/main.35a74b92.js"
   ]
 }
