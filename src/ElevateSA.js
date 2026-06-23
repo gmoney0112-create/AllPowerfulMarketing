@@ -227,11 +227,7 @@ export default function ElevateSA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => navigateTo('home')} className="flex items-center gap-2">
-            <div className="w-8 h-8 flex items-center justify-center">
-              <svg className="w-8 h-8 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </div>
+            <img src="/apm-logo.png" alt="All Powerful Marketing" className="h-10 w-10 rounded-lg bg-white object-contain p-0.5" />
             <span className="text-white font-bold text-xl tracking-tight">All Powerful Marketing</span>
           </button>
           <div className="hidden md:flex items-center gap-8">
@@ -280,11 +276,7 @@ export default function ElevateSA() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <button onClick={() => navigateTo('home')} className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 flex items-center justify-center">
-                <svg className="w-8 h-8 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                </svg>
-              </div>
+              <img src="/apm-logo.png" alt="All Powerful Marketing" className="h-10 w-10 rounded-lg bg-white object-contain p-0.5" />
               <span className="text-white font-bold text-xl tracking-tight">All Powerful Marketing</span>
             </button>
             <p className="text-sm leading-relaxed max-w-sm">
@@ -487,6 +479,7 @@ export default function ElevateSA() {
         <Navbar />
         <div className="pt-16">
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 px-4 text-center">
+            <img src="/apm-logo.png" alt="All Powerful Marketing" className="h-24 w-24 rounded-2xl bg-white object-contain p-1 mx-auto mb-6 shadow-lg" />
             <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">About <span className="text-amber-400">All Powerful Marketing</span></h1>
             <p className="text-slate-300 text-lg max-w-2xl mx-auto">A San Antonio-rooted marketing agency built on one belief: your business deserves marketing that actually works.</p>
           </div>
@@ -496,10 +489,8 @@ export default function ElevateSA() {
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h2>
                 <p className="text-slate-600 leading-relaxed mb-4">All Powerful Marketing was founded by marketers and entrepreneurs who got tired of seeing great local businesses lose to competitors with bigger ad budgets and mediocre products. We built All Powerful Marketing to level the playing field.</p>
                 <p className="text-slate-600 leading-relaxed mb-4">We are a full-service digital marketing agency based in San Antonio, Texas, serving businesses across the city and beyond. Our team specializes in four core areas: lead generation, social media management, video creation, and website development.</p>
-                <p className="text-slate-600 leading-relaxed">We do not believe in one-size-fits-all marketing. Every strategy we build starts with your goals, your audience, and your budget and it is built to deliver measurable, real-world results.</p>
-              </div>
-              <div className="space-y-6">
-                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                <p className="text-slate-600 leading-relaxed mb-6">We do not believe in one-size-fits-all marketing. Every strategy we build starts with your goals, your audience, and your budget and it is built to deliver measurable, real-world results.</p>
+                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
                   <h3 className="text-lg font-bold text-amber-700 mb-2">Our Mission</h3>
                   <p className="text-slate-700 text-sm leading-relaxed">To help San Antonio businesses grow through smart, strategic, and results-driven digital marketing without the agency bloat, the jargon, or the empty promises.</p>
                 </div>
@@ -511,6 +502,9 @@ export default function ElevateSA() {
                     ))}
                   </ul>
                 </div>
+              </div>
+              <div>
+                <img src="/apm-team.png" alt="All Powerful Marketing Team" className="w-full rounded-2xl shadow-xl" />
               </div>
             </div>
             <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -717,6 +711,24 @@ export default function ElevateSA() {
                 </button>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Your Vision. Our Strategy. <span className="text-amber-500">Powerful Results.</span></h2>
+              <p className="text-slate-600 text-lg leading-relaxed mb-6">We help businesses grow with powerful marketing solutions designed to attract, engage, and convert. Based in San Antonio, TX — built for businesses ready to dominate.</p>
+              <button onClick={() => navigateTo('contact')}
+                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold px-8 py-3 rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all inline-flex items-center gap-2">
+                Get a Free 30-Min Consultation <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+            <div>
+              <img src="/apm-team.png" alt="All Powerful Marketing Team" className="w-full rounded-2xl shadow-xl" />
+            </div>
           </div>
         </div>
       </section>
