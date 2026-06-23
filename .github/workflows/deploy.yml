@@ -29,10 +29,11 @@ jobs:
         run: npm run build
         env:
           CI: false
-          PUBLIC_URL: /allpowerfulmarketing
+          PUBLIC_URL: /
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          cname: allpowerfulmarketing.com
