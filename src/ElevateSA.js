@@ -24,7 +24,8 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const CONTACT_FORM_ID = 'contact';
+// TODO: Replace with your Formspree form ID from https://formspree.io
+const CONTACT_FORM_ID = 'YOUR_FORM_ID';
 
 export default function ElevateSA() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -75,7 +76,7 @@ export default function ElevateSA() {
       const res = await fetch(`https://formspree.io/f/${CONTACT_FORM_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, _replyto: formData.email }),
       });
       if (res.ok) {
         setFormStatus('success');
@@ -135,7 +136,7 @@ export default function ElevateSA() {
     'lead-generation': {
       title: 'Lead Generation',
       tagline: 'More leads. Better leads. Real results.',
-      hero: 'Stop waiting for customers to find you. ElevateSA builds targeted lead generation systems that consistently deliver qualified prospects straight into your pipeline so you can focus on closing deals, not chasing them.',
+      hero: 'Stop waiting for customers to find you. All Powerful Marketing builds targeted lead generation systems that consistently deliver qualified prospects straight into your pipeline so you can focus on closing deals, not chasing them.',
       intro: 'Most businesses struggle not because their product is bad, but because they do not have a reliable, scalable way to find and attract new customers. We build that system for you. Through a combination of paid advertising, outreach campaigns, landing page optimization, and data-driven targeting, we create a steady, predictable flow of prospects who are already interested in what you offer.',
       includes: [
         'Targeted paid ad campaigns (Google, Meta, LinkedIn)',
@@ -153,7 +154,7 @@ export default function ElevateSA() {
     'social-media': {
       title: 'Social Media Management',
       tagline: 'Your brand, active and engaging every single day.',
-      hero: 'Your customers are on social media right now. The question is whether they are seeing you or your competitors. ElevateSA manages your social presence so you stay top of mind, build trust, and turn followers into paying customers.',
+      hero: 'Your customers are on social media right now. The question is whether they are seeing you or your competitors. All Powerful Marketing manages your social presence so you stay top of mind, build trust, and turn followers into paying customers.',
       intro: 'Posting inconsistently, recycling the same content, or going silent for weeks kills your credibility and your algorithm reach. Our team creates and schedules professional, on-brand content tailored to each platform so your social media works around the clock even when you are focused on running your business.',
       includes: [
         'Custom content calendar (30-day planned in advance)',
@@ -171,7 +172,7 @@ export default function ElevateSA() {
     'video-creation': {
       title: 'Video Creation',
       tagline: 'Content that stops the scroll and starts the conversation.',
-      hero: 'Video is the highest-performing content format on every major platform. ElevateSA creates professional, eye-catching video content that builds your brand, showcases your services, and converts viewers into clients.',
+      hero: 'Video is the highest-performing content format on every major platform. All Powerful Marketing creates professional, eye-catching video content that builds your brand, showcases your services, and converts viewers into clients.',
       intro: 'People buy from brands they trust, and video builds that trust faster than any other medium. Whether you need short-form reels for social media, explainer videos for your website, testimonial clips, or promotional content for ads, our creative team handles everything from concept to final edit, delivering polished video your audience will actually watch.',
       includes: [
         'Short-form reels and TikToks (15-60 seconds)',
@@ -189,7 +190,7 @@ export default function ElevateSA() {
     'web-creation': {
       title: 'Website & Webpage Creation',
       tagline: 'Your 24/7 salesperson. Built to convert.',
-      hero: 'Your website is your most powerful marketing tool or your biggest missed opportunity. ElevateSA builds fast, professional, conversion-focused websites and landing pages that make an immediate impression and turn visitors into customers.',
+      hero: 'Your website is your most powerful marketing tool or your biggest missed opportunity. All Powerful Marketing builds fast, professional, conversion-focused websites and landing pages that make an immediate impression and turn visitors into customers.',
       intro: 'A slow, outdated, or confusing website sends potential customers straight to your competitors. We design and build sites that look great on every device, load fast, rank on Google, and guide visitors toward taking action, whether that is calling you, filling out a form, or making a purchase. We handle everything from design to launch and beyond.',
       includes: [
         'Custom website design (desktop + mobile responsive)',
@@ -207,8 +208,8 @@ export default function ElevateSA() {
   };
 
   const testimonials = [
-    { name: 'Maria L.', business: 'San Antonio Real Estate', quote: 'ElevateSA completely transformed our lead pipeline. Within 60 days we had more qualified leads than we knew what to do with.', stars: 5 },
-    { name: 'James T.', business: 'Local HVAC Company', quote: 'Our social media was non-existent before ElevateSA. Now we get calls from Instagram every week. Night and day difference.', stars: 5 },
+    { name: 'Maria L.', business: 'San Antonio Real Estate', quote: 'All Powerful Marketing completely transformed our lead pipeline. Within 60 days we had more qualified leads than we knew what to do with.', stars: 5 },
+    { name: 'James T.', business: 'Local HVAC Company', quote: 'Our social media was non-existent before All Powerful Marketing. Now we get calls from Instagram every week. Night and day difference.', stars: 5 },
     { name: 'Rachel M.', business: 'Boutique Fitness Studio', quote: 'The website they built for us is stunning and actually converts. Our online bookings tripled in the first month.', stars: 5 },
   ];
 
@@ -279,10 +280,12 @@ export default function ElevateSA() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <button onClick={() => navigateTo('home')} className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-sm">E</span>
+              <div className="w-8 h-8 flex items-center justify-center">
+                <svg className="w-8 h-8 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
               </div>
-              <span className="text-white font-bold text-xl">Elevate<span className="text-amber-400">SA</span></span>
+              <span className="text-white font-bold text-xl tracking-tight">All Powerful Marketing</span>
             </button>
             <p className="text-sm leading-relaxed max-w-sm">
               San Antonio's marketing partner for businesses ready to grow. We deliver leads, content, video, and web solutions that actually move the needle.
@@ -313,13 +316,13 @@ export default function ElevateSA() {
             </ul>
             <div className="mt-6 space-y-2 text-sm">
               <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>San Antonio, TX</span></div>
-              <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>hello@elevatesa.com</span></div>
+              <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>spimarketingteamtx@gmail.com</span></div>
               <div className="flex items-center gap-2"><Phone className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>(210) 555-0100</span></div>
             </div>
           </div>
         </div>
         <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>&copy; {new Date().getFullYear()} ElevateSA. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} All Powerful Marketing. All rights reserved.</p>
           <div className="flex gap-4">
             <button onClick={() => navigateTo('privacy')} className="hover:text-white transition-colors">Privacy Policy</button>
             <button onClick={() => navigateTo('terms')} className="hover:text-white transition-colors">Terms of Service</button>
@@ -355,7 +358,7 @@ export default function ElevateSA() {
         )}
       </button>
       {formStatus === 'success' && <p className="mt-3 text-center text-emerald-400 text-sm">Thank you! We will be in touch within 1 business day.</p>}
-      {formStatus === 'error' && <p className="mt-3 text-center text-red-400 text-sm">Something went wrong. Please email us at hello@elevatesa.com</p>}
+      {formStatus === 'error' && <p className="mt-3 text-center text-red-400 text-sm">Something went wrong. Please email us at spimarketingteamtx@gmail.com</p>}
     </form>
   );
 
@@ -407,7 +410,7 @@ export default function ElevateSA() {
                   </ul>
                 </div>
                 <div className="bg-slate-900 rounded-2xl p-6">
-                  <h3 className="text-lg font-bold text-white mb-3">Why ElevateSA</h3>
+                  <h3 className="text-lg font-bold text-white mb-3">Why All Powerful Marketing</h3>
                   <p className="text-slate-300 text-sm leading-relaxed">{page.why}</p>
                   <button onClick={() => navigateTo('contact')}
                     className="mt-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold px-5 py-2.5 rounded-lg text-sm hover:from-amber-400 hover:to-orange-400 transition-all inline-flex items-center gap-2">
@@ -434,7 +437,7 @@ export default function ElevateSA() {
           <h1 className="text-3xl font-black text-slate-900 mb-2">Privacy Policy</h1>
           <p className="text-slate-500 text-sm mb-8">Last updated: June 2025</p>
           <div className="text-slate-700 space-y-6 text-sm leading-relaxed">
-            <p>ElevateSA is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website or use our services.</p>
+            <p>All Powerful Marketing is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website or use our services.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Information We Collect</h2>
             <p>We collect information you voluntarily provide, including your name, email address, phone number, and any details you share via our contact form. We may also collect usage data through analytics tools such as Google Analytics.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">How We Use Your Information</h2>
@@ -442,7 +445,7 @@ export default function ElevateSA() {
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Data Security</h2>
             <p>We implement reasonable security measures to protect your information. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, email us at hello@elevatesa.com.</p>
+            <p>If you have questions about this Privacy Policy, email us at spimarketingteamtx@gmail.com.</p>
           </div>
           <button onClick={() => navigateTo('home')} className="mt-10 text-amber-600 hover:text-amber-700 text-sm font-medium">Back to Home</button>
         </div>
@@ -459,17 +462,17 @@ export default function ElevateSA() {
           <h1 className="text-3xl font-black text-slate-900 mb-2">Terms of Service</h1>
           <p className="text-slate-500 text-sm mb-8">Last updated: June 2025</p>
           <div className="text-slate-700 space-y-6 text-sm leading-relaxed">
-            <p>By using ElevateSA's website or services, you agree to these Terms of Service. Please read them carefully.</p>
+            <p>By using All Powerful Marketing's website or services, you agree to these Terms of Service. Please read them carefully.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Services</h2>
-            <p>ElevateSA provides digital marketing services including lead generation, social media management, video creation, and website development. The scope of services is defined in individual client agreements or proposals.</p>
+            <p>All Powerful Marketing provides digital marketing services including lead generation, social media management, video creation, and website development. The scope of services is defined in individual client agreements or proposals.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Payment</h2>
             <p>Payment terms are outlined in your service agreement. We reserve the right to suspend services for accounts with outstanding balances.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Intellectual Property</h2>
-            <p>Content created by ElevateSA on behalf of a client becomes the client's property upon full payment. ElevateSA retains the right to display work in our portfolio unless otherwise agreed in writing.</p>
+            <p>Content created by All Powerful Marketing on behalf of a client becomes the client's property upon full payment. All Powerful Marketing retains the right to display work in our portfolio unless otherwise agreed in writing.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Limitation of Liability</h2>
-            <p>ElevateSA is not liable for indirect, incidental, or consequential damages arising from the use of our services. Our total liability shall not exceed the amount paid for the specific service in question.</p>
+            <p>All Powerful Marketing is not liable for indirect, incidental, or consequential damages arising from the use of our services. Our total liability shall not exceed the amount paid for the specific service in question.</p>
             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-3">Contact</h2>
-            <p>Questions? Email hello@elevatesa.com.</p>
+            <p>Questions? Email spimarketingteamtx@gmail.com.</p>
           </div>
           <button onClick={() => navigateTo('home')} className="mt-10 text-amber-600 hover:text-amber-700 text-sm font-medium">Back to Home</button>
         </div>
@@ -484,14 +487,14 @@ export default function ElevateSA() {
         <Navbar />
         <div className="pt-16">
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 px-4 text-center">
-            <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">About <span className="text-amber-400">ElevateSA</span></h1>
+            <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">About <span className="text-amber-400">All Powerful Marketing</span></h1>
             <p className="text-slate-300 text-lg max-w-2xl mx-auto">A San Antonio-rooted marketing agency built on one belief: your business deserves marketing that actually works.</p>
           </div>
           <div className="max-w-4xl mx-auto px-4 py-16">
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h2>
-                <p className="text-slate-600 leading-relaxed mb-4">ElevateSA was founded by marketers and entrepreneurs who got tired of seeing great local businesses lose to competitors with bigger ad budgets and mediocre products. We built ElevateSA to level the playing field.</p>
+                <p className="text-slate-600 leading-relaxed mb-4">All Powerful Marketing was founded by marketers and entrepreneurs who got tired of seeing great local businesses lose to competitors with bigger ad budgets and mediocre products. We built All Powerful Marketing to level the playing field.</p>
                 <p className="text-slate-600 leading-relaxed mb-4">We are a full-service digital marketing agency based in San Antonio, Texas, serving businesses across the city and beyond. Our team specializes in four core areas: lead generation, social media management, video creation, and website development.</p>
                 <p className="text-slate-600 leading-relaxed">We do not believe in one-size-fits-all marketing. Every strategy we build starts with your goals, your audience, and your budget and it is built to deliver measurable, real-world results.</p>
               </div>
@@ -567,7 +570,7 @@ export default function ElevateSA() {
                       </div>
                       <div>
                         <p className="font-medium text-slate-800 text-sm">Email</p>
-                        <a href="mailto:hello@elevatesa.com" className="text-amber-600 hover:text-amber-700 text-sm">hello@elevatesa.com</a>
+                        <a href="mailto:spimarketingteamtx@gmail.com" className="text-amber-600 hover:text-amber-700 text-sm">spimarketingteamtx@gmail.com</a>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -654,7 +657,7 @@ export default function ElevateSA() {
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
                 src="https://www.youtube.com/embed/3d8AQWQPPK8?si=D6DkZqU_AWe8AsKk"
-                title="ElevateSA Video"
+                title="All Powerful Marketing"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -668,7 +671,7 @@ export default function ElevateSA() {
             Marketing That <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Actually Grows</span> Your Business
           </h1>
           <p className="text-slate-300 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Lead generation. Social media. Video. Websites. ElevateSA delivers the marketing your San Antonio business needs to attract customers, build trust, and scale all in one place.
+            Lead generation. Social media. Video. Websites. All Powerful Marketing delivers the marketing your San Antonio business needs to attract customers, build trust, and scale all in one place.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => navigateTo('contact')}
@@ -722,7 +725,7 @@ export default function ElevateSA() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6">Why San Antonio Businesses Choose <span className="text-amber-500">ElevateSA</span></h2>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6">Why San Antonio Businesses Choose <span className="text-amber-500">All Powerful Marketing</span></h2>
               <div className="space-y-5">
                 {[
                   { title: 'Results, Not Reports', desc: 'Every strategy we build is tied to a measurable outcome. You will always know what is working and what it is delivering.' },
@@ -775,16 +778,16 @@ export default function ElevateSA() {
 
       <section className="py-20 px-4 bg-gradient-to-r from-amber-500 to-orange-500">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Ready to Elevate Your Business?</h2>
+          <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Ready to Power Up Your Business?</h2>
           <p className="text-white/90 text-xl mb-8 max-w-2xl mx-auto">Get a free 30-minute strategy call. No pressure, no commitment just a clear plan to grow your business.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => navigateTo('contact')}
               className="bg-white text-slate-900 font-bold px-8 py-4 rounded-xl text-lg hover:bg-slate-100 transition-colors inline-flex items-center justify-center gap-2">
               Book My Free Call <ArrowRight className="w-5 h-5" />
             </button>
-            <a href="mailto:hello@elevatesa.com"
+            <a href="mailto:spimarketingteamtx@gmail.com"
               className="border-2 border-white text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-colors inline-flex items-center justify-center gap-2">
-              <Mail className="w-5 h-5" /> hello@elevatesa.com
+              <Mail className="w-5 h-5" /> Email Us
             </a>
           </div>
         </div>

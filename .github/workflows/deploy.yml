@@ -28,7 +28,7 @@ jobs:
         run: npm run build
         env:
           CI: false
-          PUBLIC_URL: /ElevateSA
+          PUBLIC_URL: /allpowerfulmarketing
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
