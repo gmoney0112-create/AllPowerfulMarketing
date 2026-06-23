@@ -317,7 +317,7 @@ export default function ElevateSA() {
             <div className="mt-6 space-y-2 text-sm">
               <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>San Antonio, TX</span></div>
               <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>spimarketingteamtx@gmail.com</span></div>
-              <div className="flex items-center gap-2"><Phone className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>(210) 555-0100</span></div>
+              <div className="flex items-center gap-2"><Phone className="w-4 h-4 text-amber-400 flex-shrink-0" /><span>(210) 213-0913</span></div>
             </div>
           </div>
         </div>
@@ -579,7 +579,7 @@ export default function ElevateSA() {
                       </div>
                       <div>
                         <p className="font-medium text-slate-800 text-sm">Phone</p>
-                        <a href="tel:2105550100" className="text-amber-600 hover:text-amber-700 text-sm">(210) 555-0100</a>
+                        <a href="tel:2102130913" className="text-amber-600 hover:text-amber-700 text-sm">(210) 213-0913</a>
                       </div>
                     </div>
                   </div>
