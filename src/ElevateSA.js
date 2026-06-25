@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Menu, X, Mail, MapPin, Phone,
-  TrendingUp, Users, Video, Globe,
+  TrendingUp, Users, Video, Globe, Zap,
   ChevronRight, ArrowRight, CheckCircle, Star
 } from 'lucide-react';
 
@@ -25,7 +25,7 @@ const LinkedInIcon = () => (
 );
 
 // TODO: Replace with your Formspree form ID from https://formspree.io
-const CONTACT_FORM_ID = 'YOUR_FORM_ID';
+const CONTACT_FORM_ID = 'mqeveyqo';
 
 export default function ElevateSA() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,8 +93,8 @@ export default function ElevateSA() {
     {
       id: 'lead-generation',
       icon: TrendingUp,
-      title: 'Lead Generation',
-      short: 'Fill your pipeline with qualified prospects who are ready to buy.',
+      title: 'AI Lead Generation',
+      short: 'Complete AI-powered systems that capture, qualify, and convert leads automatically — not just ads.',
       color: 'from-amber-500 to-orange-500',
       bg: 'bg-amber-50',
       accent: 'text-amber-600',
@@ -103,8 +103,8 @@ export default function ElevateSA() {
     {
       id: 'social-media',
       icon: Users,
-      title: 'Social Media Management',
-      short: 'Consistent, engaging content that builds your brand and grows your audience.',
+      title: 'Social Media & Ad Campaigns',
+      short: 'AI-assisted content, video ads, and targeted campaigns across Facebook, Instagram, and Google.',
       color: 'from-blue-500 to-indigo-600',
       bg: 'bg-blue-50',
       accent: 'text-blue-600',
@@ -114,7 +114,7 @@ export default function ElevateSA() {
       id: 'video-creation',
       icon: Video,
       title: 'Video Creation',
-      short: 'Professional video content that captures attention and drives results.',
+      short: 'AI-powered Reels, video ads, and spokesperson content that captures attention and drives results.',
       color: 'from-purple-500 to-pink-500',
       bg: 'bg-purple-50',
       accent: 'text-purple-600',
@@ -130,62 +130,102 @@ export default function ElevateSA() {
       accent: 'text-emerald-600',
       border: 'border-emerald-200',
     },
+    {
+      id: 'ai-automations',
+      icon: Zap,
+      title: 'AI Automations',
+      short: 'Intelligent workflows that qualify leads, send follow-ups, and book appointments automatically — 24/7.',
+      color: 'from-cyan-500 to-blue-600',
+      bg: 'bg-cyan-50',
+      accent: 'text-cyan-600',
+      border: 'border-cyan-200',
+    },
   ];
 
   const servicePages = {
     'lead-generation': {
-      title: 'Lead Generation',
+      title: 'AI Lead Generation',
       tagline: 'More leads. Better leads. Real results.',
-      hero: 'Stop waiting for customers to find you. All Powerful Marketing builds targeted lead generation systems that consistently deliver qualified prospects straight into your pipeline so you can focus on closing deals, not chasing them.',
-      intro: 'Most businesses struggle not because their product is bad, but because they do not have a reliable, scalable way to find and attract new customers. We build that system for you. Through a combination of paid advertising, outreach campaigns, landing page optimization, and data-driven targeting, we create a steady, predictable flow of prospects who are already interested in what you offer.',
+      hero: 'Stop waiting for customers to find you. All Powerful Marketing builds complete AI-powered lead generation systems that consistently deliver qualified prospects straight into your pipeline — so you can focus on closing deals, not chasing them.',
+      intro: 'Most businesses struggle not because their product is bad, but because they do not have a reliable, scalable way to find and attract new customers. We build that complete system for you. We go beyond just running ads — we deploy an AI-assisted pipeline that captures leads, qualifies them instantly with AI chatbots, follows up automatically via SMS and email, and books appointments on your calendar. The result is a predictable, hands-free lead flow that works even when you are not.',
       includes: [
         'Targeted paid ad campaigns (Google, Meta, LinkedIn)',
-        'Custom landing pages optimized for conversion',
-        'Email and SMS outreach sequences',
-        'CRM setup and lead tracking integration',
-        'Audience research and buyer persona development',
-        'A/B testing to continuously improve results',
-        'Monthly performance reporting with clear ROI metrics',
+        'AI-optimized landing pages built to convert',
+        'AI chatbot for instant 24/7 lead qualification',
+        'Automated SMS and email follow-up sequences',
+        'Appointment booking and calendar integration',
+        'Missed-call text-back automation',
+        'Review request workflows',
+        'CRM setup and lead pipeline management',
+        'A/B testing to continuously improve performance',
+        'Monthly reporting with clear ROI metrics',
         'Retargeting campaigns to re-engage warm prospects',
       ],
-      useCases: ['Local service businesses needing a steady client pipeline', 'B2B companies targeting decision-makers', 'Real estate agents and brokers', 'Healthcare and medical practices', 'Home services contractors', 'Any business tired of relying on referrals alone'],
-      why: 'We do not just run ads and hope for the best. Every campaign we build is tied to a clear conversion goal, tracked with precision, and continuously optimized. You will always know where your leads are coming from and exactly what they cost.',
+      useCases: [
+        'Roofing, HVAC, plumbing, and home service businesses',
+        'Real estate agents and brokers',
+        'Law firms and legal practices',
+        'Medical, dental, and wellness practices',
+        'Local service businesses needing a steady client pipeline',
+        'B2B companies targeting decision-makers',
+        'Any business tired of relying on referrals alone',
+      ],
+      why: 'We do not just run ads and hope for the best. Every lead generation system we build is a complete pipeline — from the first click to a booked appointment. AI handles qualification and follow-up instantly, so no lead goes cold. You will always know where your leads are coming from, what they cost, and how your pipeline is performing.',
     },
     'social-media': {
-      title: 'Social Media Management',
-      tagline: 'Your brand, active and engaging every single day.',
-      hero: 'Your customers are on social media right now. The question is whether they are seeing you or your competitors. All Powerful Marketing manages your social presence so you stay top of mind, build trust, and turn followers into paying customers.',
-      intro: 'Posting inconsistently, recycling the same content, or going silent for weeks kills your credibility and your algorithm reach. Our team creates and schedules professional, on-brand content tailored to each platform so your social media works around the clock even when you are focused on running your business.',
+      title: 'Social Media & Ad Campaigns',
+      tagline: 'Your brand, active and converting every single day.',
+      hero: 'Your customers are on social media right now. The question is whether they are seeing you or your competitors. All Powerful Marketing manages your social presence and runs targeted ad campaigns using AI-powered creative tools — so you stay top of mind, build trust, and turn followers into paying customers.',
+      intro: 'Posting inconsistently or running generic ads kills your credibility and your reach. Our team uses industry-leading AI tools — including AdCreative.ai, Creatify, Canva Pro, and ChatGPT — to produce high-performing content and ad creatives at scale. We plan and schedule 30 days of content in advance, produce 4 to 8 video ads per month, and run active campaigns across Facebook, Instagram, and Google — all tailored to your brand and your audience.',
       includes: [
-        'Custom content calendar (30-day planned in advance)',
-        'Professional graphic design and copywriting',
+        'Custom content calendar (30 days planned in advance)',
+        '4 to 8 video ads per month (Reels, Stories, and feed)',
+        'Facebook and Instagram campaign management',
+        'Google Display ad creatives',
+        'AI-assisted graphic design and professional copywriting',
         'Platform management: Facebook, Instagram, LinkedIn, TikTok',
         'Community management (comments, DMs, reviews)',
         'Hashtag research and SEO-optimized captions',
-        'Story and reel creation',
-        'Monthly analytics report with engagement insights',
+        'Story and Reel creation',
+        'Monthly analytics report with engagement and ad performance insights',
         'Paid social ad management (optional add-on)',
       ],
-      useCases: ['Business owners who have no time to manage their own accounts', 'Brands that need a professional, consistent presence', 'Companies launching into a new market or demographic', 'Restaurants, retailers, and service businesses', 'Professionals building a personal brand', 'Any business whose social media has gone dormant'],
-      why: 'We do not use cookie-cutter templates. Every post we create is designed for your brand, your audience, and your goals. We write in your voice, reflect your values, and always post with a purpose, not just to fill a calendar.',
+      useCases: [
+        'Business owners who have no time to manage their own accounts',
+        'Brands that need professional, consistent content at scale',
+        'Companies launching into a new market or demographic',
+        'Restaurants, retailers, and service businesses',
+        'Businesses running paid campaigns that need strong creatives',
+        'Professionals building a personal brand',
+        'Any business whose social presence has gone dormant',
+      ],
+      why: 'We do not use cookie-cutter templates. We combine AI-powered creative tools with human strategy to produce content that performs — not just content that fills a calendar. Every post, ad, and video is built for your brand, your audience, and a specific conversion goal.',
     },
     'video-creation': {
       title: 'Video Creation',
       tagline: 'Content that stops the scroll and starts the conversation.',
-      hero: 'Video is the highest-performing content format on every major platform. All Powerful Marketing creates professional, eye-catching video content that builds your brand, showcases your services, and converts viewers into clients.',
-      intro: 'People buy from brands they trust, and video builds that trust faster than any other medium. Whether you need short-form reels for social media, explainer videos for your website, testimonial clips, or promotional content for ads, our creative team handles everything from concept to final edit, delivering polished video your audience will actually watch.',
+      hero: 'Video is the highest-performing content format on every major platform. All Powerful Marketing creates professional, eye-catching video content using AI-powered production tools — so you get polished, high-converting video faster and at a fraction of traditional production costs.',
+      intro: 'People buy from brands they trust, and video builds that trust faster than any other medium. We use tools like Creatify, HeyGen, and Canva Pro to produce high-quality video ads, AI spokesperson videos, short-form Reels, and branded promotional content — all tailored to your business. Whether you need scroll-stopping social content or high-converting video ads for paid campaigns, our team handles everything from concept to final delivery.',
       includes: [
-        'Short-form reels and TikToks (15-60 seconds)',
+        'Short-form Reels and TikToks (15 to 60 seconds)',
+        'Video ads optimized for Facebook, Instagram, and Google',
+        'AI spokesperson and talking-head videos',
         'Long-form promotional and brand videos',
-        'Service or product explainer videos',
+        'Service and product explainer videos',
         'Client testimonial video production',
-        'Video ads optimized for paid campaigns',
         'Scriptwriting and storyboarding',
         'Professional editing, color grading, and captioning',
         'Platform-specific formatting (vertical, square, landscape)',
       ],
-      useCases: ['Businesses launching a new product or service', 'Companies running paid video ad campaigns', 'Service businesses that want to showcase their work', 'Brands looking to grow on Instagram Reels or TikTok', 'Professionals building authority through video content', 'Any business that wants to stand out in a crowded feed'],
-      why: 'Great video is not just about looking good. It is about saying the right thing to the right audience at the right moment. We combine creative storytelling with strategic thinking to produce video content that does not just get views, it gets results.',
+      useCases: [
+        'Businesses launching a new product or service',
+        'Companies running paid video ad campaigns',
+        'Service businesses that want to showcase their work',
+        'Brands looking to grow on Instagram Reels or TikTok',
+        'Businesses that need spokesperson or explainer content without hiring on-camera talent',
+        'Any business that wants to stand out in a crowded feed',
+      ],
+      why: 'Great video is not just about looking good. It is about saying the right thing to the right audience at the right moment. We combine AI-powered production with strategic creative direction to produce video content that does not just get views — it gets results.',
     },
     'web-creation': {
       title: 'Website & Webpage Creation',
@@ -193,7 +233,7 @@ export default function ElevateSA() {
       hero: 'Your website is your most powerful marketing tool or your biggest missed opportunity. All Powerful Marketing builds fast, professional, conversion-focused websites and landing pages that make an immediate impression and turn visitors into customers.',
       intro: 'A slow, outdated, or confusing website sends potential customers straight to your competitors. We design and build sites that look great on every device, load fast, rank on Google, and guide visitors toward taking action, whether that is calling you, filling out a form, or making a purchase. We handle everything from design to launch and beyond.',
       includes: [
-        'Custom website design (desktop + mobile responsive)',
+        'Custom website design (desktop and mobile responsive)',
         'Conversion-optimized landing pages',
         'SEO foundation setup (meta tags, structured data, site speed)',
         'Contact forms and lead capture integration',
@@ -202,8 +242,42 @@ export default function ElevateSA() {
         'Blog and content management system setup',
         'Ongoing maintenance and update packages available',
       ],
-      useCases: ['Businesses with an outdated or non-existent website', 'Companies launching a new brand or rebrand', 'Businesses running ad campaigns that need dedicated landing pages', 'Service providers who need a site that actually generates leads', 'E-commerce brands needing a high-converting storefront', 'Professionals who want a site they are proud to share'],
+      useCases: [
+        'Businesses with an outdated or non-existent website',
+        'Companies launching a new brand or rebrand',
+        'Businesses running ad campaigns that need dedicated landing pages',
+        'Service providers who need a site that actually generates leads',
+        'E-commerce brands needing a high-converting storefront',
+        'Professionals who want a site they are proud to share',
+      ],
       why: 'We do not hand you a template and walk away. Every site we build starts with your goals, your audience, and your brand. We design with intention and build with performance in mind, and we stick around to make sure it keeps working for you.',
+    },
+    'ai-automations': {
+      title: 'AI Automations',
+      tagline: 'Stop doing manually what AI can do automatically.',
+      hero: 'Most local businesses waste hours every week on repetitive tasks — following up with leads, answering the same questions, scheduling appointments. All Powerful Marketing builds custom AI automation systems that handle these workflows for you, 24 hours a day, 7 days a week, so your team can focus on the work that actually grows your business.',
+      intro: 'AI automation is the highest-leverage service we offer. Using platforms like GoHighLevel, Make.com, and n8n, we build multi-step workflows that connect your lead sources, CRM, calendar, SMS, email, and communication tools into one seamless system. When a new lead comes in, your automation immediately qualifies them, sends a personalized response, books an appointment, notifies your team, and follows up — without anyone lifting a finger.',
+      includes: [
+        'Custom AI chatbot for 24/7 lead qualification and FAQ handling',
+        'AI receptionist for after-hours call and message coverage',
+        'Automated SMS and email follow-up sequences',
+        'Appointment booking and calendar automation',
+        'Missed-call text-back workflows',
+        'CRM integration and automated pipeline management',
+        'Review request and reputation management automation',
+        'Multi-step workflow builds (GoHighLevel, Make.com, n8n)',
+        'Industry-specific automation blueprints',
+        'Monthly automation performance reporting',
+      ],
+      useCases: [
+        'HVAC companies that need instant lead response and technician dispatch',
+        'Law firms that want AI to qualify cases and schedule consultations 24/7',
+        'Real estate agents who need instant follow-up on Facebook and Zillow leads',
+        'Medical and dental practices reducing no-shows with automated reminders',
+        'Home service businesses managing high lead volume without adding staff',
+        'Any business spending hours on tasks that should run automatically',
+      ],
+      why: 'This is where we differentiate ourselves from traditional marketing agencies. We do not just bring you leads — we build the system that catches, qualifies, and converts them automatically. One new client from a single automated workflow can pay for months of our service. That is the ROI of AI automation done right.',
     },
   };
 
@@ -283,9 +357,9 @@ export default function ElevateSA() {
               San Antonio's marketing partner for businesses ready to grow. We deliver leads, content, video, and web solutions that actually move the needle.
             </p>
             <div className="flex gap-3 mt-4">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><FacebookIcon /></a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><InstagramIcon /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><LinkedInIcon /></a>
+              <a href="https://www.facebook.com/profile.php?id=61590598517520" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><FacebookIcon /></a>
+              <a href="https://www.instagram.com/allpowerfulmarketing" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><InstagramIcon /></a>
+              <a href="https://www.linkedin.com/in/all-powerful-marketing-328400419" target="_blank" rel="noreferrer" className="w-8 h-8 bg-slate-800 hover:bg-amber-500 rounded-lg flex items-center justify-center transition-colors"><LinkedInIcon /></a>
             </div>
           </div>
           <div>
@@ -488,7 +562,7 @@ export default function ElevateSA() {
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h2>
                 <p className="text-slate-600 leading-relaxed mb-4">All Powerful Marketing was founded by marketers and entrepreneurs who got tired of seeing great local businesses lose to competitors with bigger ad budgets and mediocre products. We built All Powerful Marketing to level the playing field.</p>
-                <p className="text-slate-600 leading-relaxed mb-4">We are a full-service digital marketing agency based in San Antonio, Texas, serving businesses across the city and beyond. Our team specializes in four core areas: lead generation, social media management, video creation, and website development.</p>
+                <p className="text-slate-600 leading-relaxed mb-4">We are a full-service AI-powered digital marketing agency based in San Antonio, Texas, serving businesses across the city and beyond. Our team specializes in five core areas: AI lead generation, social media management and ad campaigns, video creation, website development, and AI automation systems.</p>
                 <p className="text-slate-600 leading-relaxed mb-6">We do not believe in one-size-fits-all marketing. Every strategy we build starts with your goals, your audience, and your budget and it is built to deliver measurable, real-world results.</p>
                 <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
                   <h3 className="text-lg font-bold text-amber-700 mb-2">Our Mission</h3>
@@ -692,9 +766,9 @@ export default function ElevateSA() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Everything Your Business Needs to <span className="text-amber-500">Grow Online</span></h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">Four focused services, one trusted partner. No bloated agency retainers just real work that gets real results.</p>
+            <p className="text-slate-600 max-w-2xl mx-auto">Five high-impact services, one trusted partner. No bloated agency retainers — just AI-powered marketing that gets real results.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map(svc => {
               const Icon = svc.icon;
               return (
@@ -711,6 +785,52 @@ export default function ElevateSA() {
                 </button>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-slate-900">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+              <Zap className="w-3.5 h-3.5" /> All-In-One Growth Package
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">The AI Growth System — <span className="text-amber-400">Everything in One Place</span></h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">Instead of managing multiple vendors, get a complete AI-powered marketing and automation system under one roof — one team, one point of contact, one monthly fee.</p>
+          </div>
+          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                'Facebook & Instagram Ads',
+                'Google Ads',
+                'AI Chatbot & Receptionist',
+                'Automated SMS Campaigns',
+                'Email Marketing Sequences',
+                'CRM & Pipeline Management',
+                'Appointment Booking',
+                'Review Generation',
+                'Social Media Content (30 days)',
+                'Video Ad Creatives',
+                'Missed-Call Text-Back',
+                'Monthly Performance Reporting',
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                  <span className="text-slate-300 text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 pt-8 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <p className="text-slate-400 text-sm">Starting at</p>
+                <p className="text-3xl font-black text-white">$1,500 <span className="text-lg font-normal text-slate-400">/ month</span></p>
+                <p className="text-slate-500 text-xs mt-1">Custom packages available based on your business goals</p>
+              </div>
+              <button onClick={() => navigateTo('contact')}
+                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold px-8 py-3 rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all inline-flex items-center gap-2 whitespace-nowrap">
+                Get a Custom Quote <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -782,6 +902,25 @@ export default function ElevateSA() {
                   <p className="font-bold text-slate-900 text-sm">{t.name}</p>
                   <p className="text-slate-500 text-xs">{t.business}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Industries We <span className="text-amber-500">Specialize In</span></h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">We focus on high-value industries where one new client justifies a full marketing retainer — and where smart automation creates a real competitive advantage.</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              'Real Estate Teams', 'Law Firms', 'Medical & Dental', 'HVAC & Home Services',
+              'Roofing & Plumbing', 'Auto Repair', 'Insurance Agencies', 'Med Spas & Wellness',
+            ].map((industry, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 text-center hover:border-amber-300 hover:shadow-md transition-all cursor-default">
+                <p className="text-slate-800 font-semibold text-sm">{industry}</p>
               </div>
             ))}
           </div>
