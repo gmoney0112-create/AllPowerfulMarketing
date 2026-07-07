@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import LeadLeakQuiz from './LeadLeakQuiz';
 import {
   Menu, X, MapPin, Phone,
   TrendingUp, Users, Video, Globe, Zap,
@@ -1067,6 +1068,9 @@ export default function ElevateSA({ page }) {
           </div>
         </div>
       </section>
+
+      {/* Lead Leak Quiz */}
+      <LeadLeakQuiz />
 
       {/* CTA */}
       <section className="py-20 px-4 bg-gradient-to-r from-amber-500 to-orange-500">
