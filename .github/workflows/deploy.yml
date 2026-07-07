@@ -22,6 +22,9 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Install Chromium
+        run: sudo apt-get install -y chromium-browser
+
       - name: Install dependencies
         run: npm ci
 
@@ -30,6 +33,7 @@ jobs:
         env:
           CI: false
           PUBLIC_URL: /
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
