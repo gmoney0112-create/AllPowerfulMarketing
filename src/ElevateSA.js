@@ -884,6 +884,28 @@ export default function ElevateSA({ page }) {
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #f59e0b 0%, transparent 60%), radial-gradient(circle at 80% 20%, #f97316 0%, transparent 50%)' }} />
         <div className="relative max-w-5xl mx-auto text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {[
+              { id: '7XoCwoR1Yec', title: 'All Powerful Marketing video 1' },
+              { id: 'l2NithDcYGk', title: 'All Powerful Marketing video 2' },
+              { id: 'Mrr0fQI-UQk', title: 'All Powerful Marketing video 3' },
+              { id: '2eyNfo56Z8o', title: 'All Powerful Marketing video 4' },
+            ].map((v) => (
+              <div key={v.id} className="rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${v.id}`}
+                    title={v.title}
+                    loading="lazy"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20 mb-10">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
