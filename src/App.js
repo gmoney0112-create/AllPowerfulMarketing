@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ElevateSA from './ElevateSA';
+import AIPromptGenerator from './AIPromptGenerator';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/privacy" element={<ElevateSA page="privacy" />} />
           <Route path="/terms" element={<ElevateSA page="terms" />} />
           <Route path="/services/:serviceId" element={<ElevateSA page="service" />} />
+          <Route path="/ai-prompt-generator" element={<AIPromptGenerator />} />
           <Route path="*" element={<ElevateSA page="home" />} />
         </Routes>
       </BrowserRouter>
