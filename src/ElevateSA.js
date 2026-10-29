@@ -1098,10 +1098,34 @@ export default function ElevateSA({ page }) {
         </div>
       </section>
 
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">See Our Work <span className="text-amber-500">in Action</span></h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">Watch how All Powerful Marketing drives real results for businesses across San Antonio.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              'wFUbzH7g_Nk',
+              'l2NithDcYGk',
+              '7XoCwoR1Yec',
+            ].map((id) => (
+              <div key={id} className="relative w-full rounded-2xl overflow-hidden shadow-lg aspect-video bg-slate-900">
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}`}
+                  title="All Powerful Marketing video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Lead Leak Quiz */}
       <LeadLeakQuiz />
-
-      {/* CTA */}
       <section className="py-20 px-4 bg-gradient-to-r from-amber-500 to-orange-500">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Ready to Power Up Your Business?</h2>
