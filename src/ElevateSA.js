@@ -1109,6 +1109,9 @@ export default function ElevateSA({ page }) {
               'wFUbzH7g_Nk',
               'l2NithDcYGk',
               '7XoCwoR1Yec',
+              'ftXyxfl-SEA',
+              '0Svm3WDmzi4',
+              '-KDy4dJTac0',
             ].map((id) => (
               <div key={id} className="relative w-full rounded-2xl overflow-hidden shadow-lg aspect-video bg-slate-900">
                 <iframe
